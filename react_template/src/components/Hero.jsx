@@ -1,5 +1,6 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
+import { SectionTransition } from './SectionTransition';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -7,7 +8,8 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 relative overflow-hidden">
+    <SectionTransition>
+      <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -20,8 +22,18 @@ const Hero = () => {
           <div className="lg:w-1/3 flex justify-center">
             <div className="relative">
               <div className="w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full p-1">
-                <div className="w-full h-full bg-gray-800 rounded-full flex items-center justify-center text-6xl font-bold text-white">
-                  RA
+                <div className="w-full h-full bg-gray-800 rounded-full overflow-hidden">
+                  <img 
+                    src="/images/imp.jpg" 
+                    alt="Raj Agarwal"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/images/placeholder.jpg';
+                      e.target.parentElement.classList.add('flex', 'items-center', 'justify-center', 'bg-gray-800');
+                      e.target.parentElement.innerHTML = 'RA';
+                    }}
+                  />
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
@@ -34,8 +46,8 @@ const Hero = () => {
           <div className="lg:w-2/3 text-center lg:text-left">
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-                Hi, I'm{' '}
-                <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                <span className="drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">Hi, I'm</span>{' '}
+                <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(59,130,246,0.8)] animate-pulse">
                   {personalInfo.name}
                 </span>
               </h1>
@@ -59,7 +71,7 @@ const Hero = () => {
                   <div className="text-gray-400">Hackathon</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-green-400">5+</div>
+                  <div className="text-3xl font-bold text-green-400">2+</div>
                   <div className="text-gray-400">Projects</div>
                 </div>
                 <div className="text-center">
@@ -129,6 +141,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
+    </SectionTransition>
   );
 };
 

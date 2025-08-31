@@ -16,30 +16,34 @@ export const skills = [
   { name: "HTML", level: 90, logo: "🌐" },
   { name: "CSS", level: 85, logo: "🎨" },
   { name: "JavaScript", level: 80, logo: "⚡" },
-  { name: "React.js", level: 75, logo: "⚛️" }
+  { name: "React.js", level: 75, logo: "⚛️" },
+  { name: "Canva", level: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" }
 ];
 
 export const experience = [
   {
-    title: "Graphic Design Intern",
-    company: "NGO Adore",
-    duration: "2023",
-    type: "Internship",
-    description: "Created visual content and marketing materials for social causes"
+    title: "Open Source Contributor",
+    company: "GSSOC (GirlScript Summer of Code)",
+    duration: "2025",
+    type: "Contribution",
+    description: "Contributed to various open-source projects and learned collaborative development",
+    logo: "🪁" // Kite emoji for open source
   },
   {
     title: "Graphic Design Intern", 
-    company: "Save the Girl Foundation",
+    company: "Save the Girl Foundation (NGO)",
     duration: "2023",
     type: "Internship",
-    description: "Designed awareness campaigns and educational materials"
+    description: "Created awareness and fund raising posters for social media for specially abled children",
+    logo: "🔵" // Circle emoji for NGO
   },
   {
-    title: "Open Source Contributor",
-    company: "GSSOC (GirlScript Summer of Code)",
-    duration: "2024",
-    type: "Contribution",
-    description: "Contributed to various open-source projects and learned collaborative development"
+    title: "Graphic Design Intern",
+    company: "Adore Earth",
+    duration: "2022-2023",
+    type: "Internship",
+    description: "Created newsletters and social media contents for environmental awareness campaigns",
+    logo: "🔘" // Circle emoji for environment
   }
 ];
 

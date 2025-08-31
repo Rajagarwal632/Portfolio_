@@ -1,155 +1,137 @@
 import React from 'react';
-import { skills } from '../data/portfolioData';
+import { SectionTransition } from './SectionTransition';
+import { motion } from 'framer-motion';
 
 const Skills = () => {
-  const techLogos = {
-    'HTML': {
-      icon: '🌐',
-      color: 'text-orange-500',
-      bg: 'bg-orange-500/10'
+  const techStacks = [
+    {
+      name: 'React.js',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      color: 'from-cyan-400 to-blue-500'
     },
-    'CSS': {
-      icon: '🎨',
-      color: 'text-blue-500',
-      bg: 'bg-blue-500/10'
+    {
+      name: 'JavaScript',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+      color: 'from-yellow-400 to-orange-500'
     },
-    'JavaScript': {
-      icon: '⚡',
-      color: 'text-yellow-500',
-      bg: 'bg-yellow-500/10'
+    {
+      name: 'Node.js',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+      color: 'from-green-400 to-green-600'
     },
-    'React.js': {
-      icon: '⚛️',
-      color: 'text-cyan-500',
-      bg: 'bg-cyan-500/10'
+    {
+      name: 'C++',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+      color: 'from-blue-500 to-purple-600'
+    },
+    {
+      name: 'C',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
+      color: 'from-blue-600 to-indigo-700'
+    },
+    {
+      name: 'MongoDB',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+      color: 'from-green-500 to-green-700'
+    },
+    {
+      name: 'Express.js',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+      color: 'from-gray-400 to-gray-600'
+    },
+    {
+      name: 'Git',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+      color: 'from-orange-500 to-red-600'
+    },
+  ];
+
+  // Animation variants for skills
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
     }
   };
 
-  const additionalSkills = [
-    { name: 'Git & GitHub', level: 80, icon: '🔧', color: 'text-gray-400' },
-    { name: 'Responsive Design', level: 85, icon: '📱', color: 'text-green-400' },
-    { name: 'Problem Solving', level: 90, icon: '🧩', color: 'text-purple-400' },
-    { name: 'Team Leadership', level: 85, icon: '👥', color: 'text-blue-400' }
-  ];
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.2, 0.65, 0.3, 0.9]
+      }
+    }
+  };
 
   return (
-    <section id="skills" className="py-20 bg-black">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-              My <span className="text-blue-400">Skills</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mb-6"></div>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              A comprehensive overview of my technical expertise and professional capabilities
-            </p>
-          </div>
-
-          {/* Technical Skills */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-semibold text-white mb-8 text-center">Technical Skills</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {skills.map((skill, index) => {
-                const techInfo = techLogos[skill.name];
-                return (
-                  <div
-                    key={index}
-                    className="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all duration-300 group"
-                  >
-                    <div className={`w-16 h-16 ${techInfo.bg} rounded-full flex items-center justify-center text-3xl mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
-                      {techInfo.icon}
-                    </div>
-                    <h4 className={`text-lg font-semibold ${techInfo.color} text-center mb-3`}>
-                      {skill.name}
-                    </h4>
-                    <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
-                      <div
-                        className={`h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-1000 ease-out`}
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
-                    <p className="text-gray-400 text-center text-sm">{skill.level}% Proficiency</p>
-                  </div>
-                );
-              })}
+    <SectionTransition>
+      <section id="skills" className="py-20 bg-gray-800">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+                What I <span className="text-blue-400">Bring to the Table</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mb-6"></div>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                A comprehensive overview of my technical expertise and professional capabilities
+              </p>
             </div>
-          </div>
 
-          {/* Additional Skills */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-semibold text-white mb-8 text-center">Additional Skills</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {additionalSkills.map((skill, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-900/30 p-6 rounded-xl border border-gray-700 hover:bg-gray-800/50 transition-all duration-300"
+            {/* Tech Stack Cards */}
+            <motion.div 
+              className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              {techStacks.map((tech, index) => (
+                <motion.div 
+                  key={index} 
+                  className="relative group bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all duration-500 overflow-hidden cursor-pointer"
+                  variants={item}
+                  whileHover={{ scale: 1.05, rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center">
-                      <span className="text-2xl mr-3">{skill.icon}</span>
-                      <span className={`text-lg font-medium ${skill.color}`}>{skill.name}</span>
+                  {/* Water Fill Animation */}
+                  <motion.div 
+                    className={`absolute inset-0 bg-gradient-to-t ${tech.color} opacity-0 group-hover:opacity-20 transition-all duration-700 ease-out transform translate-y-full group-hover:translate-y-0`}
+                  ></motion.div>
+                  
+                  {/* Tech Logo */}
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="w-16 h-16 mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <img 
+                        src={tech.logo} 
+                        alt={tech.name}
+                        className="w-full h-full object-contain filter group-hover:drop-shadow-lg transition-all duration-300"
+                        style={{
+                          filter: tech.name === 'Express.js' ? 'invert(1)' : tech.invert === false ? 'none' : 'none'
+                        }}
+                      />
                     </div>
-                    <span className="text-gray-400 text-sm">{skill.level}%</span>
+                    <h3 className="text-white font-medium text-center">{tech.name}</h3>
                   </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2">
-                    <div
-                      className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-1000 ease-out"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Skills Chart Visualization */}
-          <div className="bg-gray-900/30 p-8 rounded-xl border border-gray-700">
-            <h3 className="text-2xl font-semibold text-white mb-6 text-center">Skills Overview</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {skills.map((skill, index) => (
-                <div key={index} className="text-center">
-                  <div className="relative w-24 h-24 mx-auto mb-4">
-                    <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        stroke="rgb(55, 65, 81)"
-                        strokeWidth="8"
-                        fill="none"
-                      />
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        stroke="url(#gradient)"
-                        strokeWidth="8"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeDasharray={`${skill.level * 2.51} 251`}
-                        className="transition-all duration-1000 ease-out"
-                      />
-                      <defs>
-                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#3b82f6" />
-                          <stop offset="100%" stopColor="#8b5cf6" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">{skill.level}%</span>
-                    </div>
+                  {/* Ripple Effect */}
+                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className={`absolute inset-0 rounded-xl bg-gradient-to-r ${tech.color} opacity-10 animate-pulse`}></div>
                   </div>
-                  <p className="text-gray-300 font-medium">{skill.name}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </SectionTransition>
   );
 };
 

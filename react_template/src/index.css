@@ -23,3 +23,26 @@
 ::-webkit-scrollbar-corner {
   display: none;
 }
+
+/* Scroll Animation Styles */
+.scroll-target {
+  animation: scrollHighlight 0.4s ease-out forwards;
+}
+
+@keyframes scrollHighlight {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Smooth scroll behavior for the entire app */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Slightly reduced padding for better feel */
+  scroll-snap-type: y proximity;
+}
